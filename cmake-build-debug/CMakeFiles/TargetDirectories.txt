@@ -1,0 +1,3 @@
+/Users/ahmad/Clion-AVR/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ahmad/Clion-AVR/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/ahmad/Clion-AVR/cmake-build-debug/CMakeFiles/AVR.dir

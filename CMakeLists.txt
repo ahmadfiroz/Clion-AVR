@@ -2,24 +2,27 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.4)
 SET(CMAKE_SYSTEM_NAME Generic)
 
 #============================================================================================
-PROJECT(AVR)		  		# <-- Prjektname
+PROJECT(AVR)		  		# <-- Project Name
 
-SET(FILES main.c)		  	# <-- Quelldatei(en)
+SET(FILES main.c)		  	# <-- Source File(s) (Seperated by Spaces)
 
-SET(DEVICE atmega328p)			# <-- MCU
-SET(FREQ 16000000)			# <-- MCU-Frequenz
+SET(DEVICE atmega328p)			# <-- MCU.Go https://gcc.gnu.org/onlinedocs/gcc/AVR-Options.html to get a list of supported MCU
+SET(FREQ 16000000)#Hz			# <-- MCU-frequency
 
-SET(AVRBIN /opt/local/bin)		# <-- Toolchain
+SET(AVRBIN /usr/local/CrossPack-AVR/bin/)		# <-- Toolchain
 SET(AVROBJCOPY avr-objcopy)		# <--     ""
 SET(AVRSIZE avr-size)			# <--     ""
 SET(AVRDUDE avrdude)			# <--     ""
 
-SET(PROGRAMMER avrispmkii)		# <-- Programmertype			
-SET(PORT usb)		         	# <-- USB bzw. Schnittstelle z.B. /dev/cu.usbserial....
-# SET(BAUD 57600)	        	# <-- Übertragungsrate
+SET(PROGRAMMER arduino)		# <-- Programmer Type. Go http://www.nongnu.org/avrdude/user-manual/avrdude_12.html for list of programmer Type
+SET(PORT /dev/cu.usbmodem1411)		         	# <-- USB and interface
+#In MacOS go to terminal and type "ls /dev/tty.*" (without quotes) For USB connection after connecting programmer
+#In linux go to terminal and type "ls /dev/ttyACM*" (without quotes) if not found try "ls /dev/ttyACM*"(without quotes)
+#Also a portfinder script is available https://startingelectronics.org/software/processing/find-arduino-port/
+SET(BAUD 115200)	        	# <-- Baud Rate. Refer to datasheet
 
-SET(EEPROM NO)	     	        	# <-- soll eine x.eep Datei erstellt werden?
-SET(FLASH NO)		        	# <-- soll Geflasht werden?
+SET(EEPROM OFF)	     	        	# <-- Want to create an x.eep file? ON/OFF
+SET(FLASH OFF)		        	# <-- Should be uploaded? ON/OFF
 
 #============================================================================================
 
@@ -33,7 +36,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 set(CMAKE_PREFIX_PATH /opt/local/avr)
 set(CMAKE_EXECUTABLE_SUFFIX ".elf")
 
-include_directories( /opt/local/avr/include)
+include_directories( /usr/local/usr/local/CrossPack-AVR/include)
 
 SET(SOURCE_FILES ${FILES})
 
