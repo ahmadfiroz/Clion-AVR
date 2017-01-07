@@ -1,1 +1,0 @@
-/usr/local/CrossPack-AVR/bin//avr-gcc  -Os -mmcu=atmega328p -DF_CPU=16000000UL -std=gnu99 -Wl,--gc-sections -g   CMakeFiles/AVR.dir/main.c.obj  -o ../bin/AVR.elf 
